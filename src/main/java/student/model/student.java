@@ -3,18 +3,19 @@ package student.model;
 import school.model.school;
 import schoolBus.model.studentInTrip;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
-@Table(name = "students")
+@Table(name = "student")
 public class student {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column
     private String name;
 
+    @Column
     private String regNo;
 
 
@@ -28,7 +29,7 @@ public class student {
         return studentInTrip;
     }
 
-    public void setStudentInTrip(schoolBus.model.studentInTrip studentInTrip) {
+    public void setStudentInTrip(studentInTrip studentInTrip) {
         this.studentInTrip = studentInTrip;
     }
 

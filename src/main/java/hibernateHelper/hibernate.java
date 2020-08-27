@@ -1,13 +1,14 @@
 package hibernateHelper;
 
+import customer.model.customer;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.cfg.Environment;
 import org.hibernate.service.ServiceRegistry;
 import school.model.school;
-import schoolBus.model.schoolBus;
-import schoolBus.model.schoolTrip;
+import schoolBus.model.commuteCompany;
+import schoolBus.model.commuteTrip;
 import schoolBus.model.studentInTrip;
 import student.model.student;
 
@@ -24,21 +25,21 @@ public class hibernate {
 
         Properties properties = new Properties();
         properties.setProperty(Environment.DRIVER, "com.mysql.cj.jdbc.Driver");
-        properties.setProperty(Environment.URL, "jdbc:mysql://localhost:3306/tracom2?useSSL=false&serverTimezone=UTC");
+        properties.setProperty(Environment.URL, "jdbc:mysql://localhost:3306/project2?useSSL=false&serverTimezone=UTC");
         properties.setProperty(Environment.USER, "root");
         properties.setProperty(Environment.PASS, "");
         properties.setProperty(Environment.DIALECT, "org.hibernate.dialect.MySQL5Dialect");
         properties.setProperty(Environment.SHOW_SQL, "true");
         properties.setProperty(Environment.HBM2DDL_AUTO, "update");
         properties.setProperty(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
-
         configuration.setProperties(properties);
 
 
+        configuration.addAnnotatedClass(customer.class);
         configuration.addAnnotatedClass(school.class);
         configuration.addAnnotatedClass(student.class);
-        configuration.addAnnotatedClass(schoolBus.class);
-        configuration.addAnnotatedClass(schoolTrip.class);
+        configuration.addAnnotatedClass(commuteCompany.class);
+        configuration.addAnnotatedClass(commuteTrip.class);
         configuration.addAnnotatedClass(studentInTrip.class);
 
         ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()

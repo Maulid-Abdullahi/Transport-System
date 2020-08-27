@@ -1,28 +1,17 @@
-package school.model;
-
-import student.model.student;
+package customer.model;
+import schoolBus.model.commuteTrip;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
-@Table(name = "school")
-public class school {
-
-    @Id@GeneratedValue(strategy = GenerationType.IDENTITY)
+@Table(name = "customers")
+public class customer {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @OneToMany(mappedBy = "school", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<student> students = new ArrayList<student>();
-
-    public List<student> getStudents() {
-        return students;
-    }
-
-    public void setStudents(List<student> students) {
-        this.students = students;
-    }
+    @ManyToOne
+    private commuteTrip commuteTrips;
 
     @Column
     private String name;
@@ -39,6 +28,14 @@ public class school {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public commuteTrip getCommuteTrips() {
+        return commuteTrips;
+    }
+
+    public void setCommuteTrips(commuteTrip commuteTrips) {
+        this.commuteTrips = commuteTrips;
     }
 
     public String getName() {
