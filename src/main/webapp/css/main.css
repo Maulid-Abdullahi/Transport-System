@@ -1,3 +1,11 @@
+.longhand2 {
+    font-style: initial;
+    font-variant: initial;
+    font-weight: bold;
+    font-size: 1.5em;
+    line-height: initial;
+    font-family: Times, "Times New Roman", serif;
+}
 
 ::-moz-selection {
   /* Code for Firefox */

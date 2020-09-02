@@ -1,28 +1,18 @@
 package school.model;
 
-import student.model.student;
+import student.model.Student;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "school")
-public class school {
+@Table(name = "schools")
+public class School {
 
     @Id@GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @OneToMany(mappedBy = "school", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<student> students = new ArrayList<student>();
-
-    public List<student> getStudents() {
-        return students;
-    }
-
-    public void setStudents(List<student> students) {
-        this.students = students;
-    }
 
     @Column
     private String name;
@@ -32,6 +22,19 @@ public class school {
 
     @Column
     private String email;
+
+
+    @OneToMany(mappedBy = "school",  cascade = CascadeType.ALL)
+    private List<Student> students = new ArrayList<Student>();
+
+    public School() {
+    }
+
+    public School(String name, String phoneNo, String email) {
+    }
+
+    public School(int id, String name, String phoneNo, String email) {
+    }
 
     public int getId() {
         return id;
@@ -63,5 +66,13 @@ public class school {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public List<Student> getStudents() {
+        return students;
+    }
+
+    public void setStudents(List<Student> students) {
+        this.students = students;
     }
 }

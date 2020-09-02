@@ -1,13 +1,12 @@
 package student.model;
+import school.model.School;
 
-import school.model.school;
-import schoolBus.model.studentInTrip;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "student")
-public class student {
+@Table(name = "students")
+public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -18,22 +17,34 @@ public class student {
     @Column
     private String regNo;
 
+    @Column(name = "skul")
+    private String Skul;
 
-    @ManyToOne
-    private school school;
-
-    @ManyToOne
-    private studentInTrip studentInTrip;
-
-    public studentInTrip getStudentInTrip() {
-        return studentInTrip;
+    public Student(String name, String regNo, String school, String skul) {
     }
 
-    public void setStudentInTrip(studentInTrip studentInTrip) {
-        this.studentInTrip = studentInTrip;
+    public Student(int id, String name, String regNo, String school, String skul) {
     }
 
+    public String getSkul() {
+        return Skul;
+    }
 
+    public void setSkul(String skul) {
+        Skul = skul;
+    }
+
+    @ManyToOne
+    @JoinColumn(name="school_id")
+    private School school;
+
+
+    public Student() {
+    }
+
+   
+
+   
 
     public int getId() {
         return id;
@@ -59,14 +70,12 @@ public class student {
         this.regNo = regNo;
     }
 
-    public school getSchool() {
+    public School getSchool() {
         return school;
     }
 
-    public void setSchool(school school) {
+    public void setSchool(School school) {
         this.school = school;
     }
 }
-
-
 

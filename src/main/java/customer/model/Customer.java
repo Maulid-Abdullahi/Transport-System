@@ -1,17 +1,13 @@
 package customer.model;
-import schoolBus.model.commuteTrip;
 
 import javax.persistence.*;
 
 @Entity
-@Table(name = "customers")
-public class customer {
+@Table(name = "customer")
+public class Customer {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
-
-    @ManyToOne
-    private commuteTrip commuteTrips;
 
     @Column
     private String name;
@@ -28,14 +24,6 @@ public class customer {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public commuteTrip getCommuteTrips() {
-        return commuteTrips;
-    }
-
-    public void setCommuteTrips(commuteTrip commuteTrips) {
-        this.commuteTrips = commuteTrips;
     }
 
     public String getName() {
